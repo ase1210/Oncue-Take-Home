@@ -18,7 +18,12 @@ class Truck < ApplicationRecord
     foreign_key: :truck_id,
     class_name: :Job
 
-  def self.find_available_trucks(s_time, e_time)
-    self.where("start_time <= ? AND end_time >= ?", s_time, e_time)
+  def self.find_open_truck(date, s_time, e_time)
+    open_trucks = Truck.where("start_time <= ? AND end_time >= ?", s_time, e_time).includes(:jobs)
+    trucks = []
+    open_trucks.each do |truck|
+      trucks << truck.id if truck.jobs.none? { |job| job.has_conflict?(date, s_time, e_time) }
+    end
+    trucks.sample
   end
 end

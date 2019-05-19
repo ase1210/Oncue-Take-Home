@@ -23,4 +23,14 @@ class Job < ApplicationRecord
     primary_key: :id,
     foreign_key: :truck_id,
     class_name: :Truck
+
+  def has_conflict?(date, s_time, e_time)
+    return self.date == date && (
+ # does the new job fall completely within the existing job?
+             self.start < s_time && self.end > e_time ||
+             # does the new job start within the existing job?
+             self.end > s_time && self.start <= s_time ||
+             # does the new job end within the existing job?
+             self.end >= e_time && self.start < e_time)
+  end
 end
