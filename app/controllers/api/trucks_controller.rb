@@ -7,8 +7,8 @@ class Api::TrucksController < ApplicationController
 
   def create
     @truck = Truck.new(name: params[:truck][:name])
-    @truck.start_time = Time.new(1, 1, 1, params[:truck][:start_time])
-    @truck.end_time = Time.new(1, 1, 1, params[:truck][:end_time])
+    @truck.start_time = Time.new(1, 1, 1, params[:truck][:start_time]) if params[:truck][:start_time]
+    @truck.end_time = Time.new(1, 1, 1, params[:truck][:end_time]) if params[:truck][:end_time]
 
     if @truck.save
       render :show
