@@ -14,6 +14,10 @@
 
 class Job < ApplicationRecord
   validates :name, :date, :start, :end, presence: true
+  validates :start, :end, overlap: {
+                            exclude_edges: [:start, :end],
+                            scope: [:truck_id, :date],
+                          }
 
   belongs_to :truck,
     primary_key: :id,

@@ -17,4 +17,8 @@ class Truck < ApplicationRecord
     primary_key: :id,
     foreign_key: :truck_id,
     class_name: :Job
+
+  def self.find_available_trucks(s_time, e_time)
+    self.where("start_time <= ? AND end_time >= ?", s_time, e_time)
+  end
 end
