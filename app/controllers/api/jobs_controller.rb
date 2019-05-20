@@ -19,7 +19,7 @@ class Api::JobsController < ApplicationController
     if @job.save
       render :show
     else
-      render json: ["There are no trucks available during that timeframe"], status: 422
+      render json: @job.errors.full_messages, status: 422
     end
   end
 
