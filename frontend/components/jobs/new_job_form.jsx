@@ -1,4 +1,6 @@
 import React from "react";
+import MinOptions from "../form_utilities/min_options";
+import HourOptions from "../form_utilities/hour_options";
 
 const JobFormErrors = props => (
   <div className="job-errors-container">
@@ -17,9 +19,9 @@ class JobForm extends React.Component {
       name: "",
       date: undefined,
       s_hour: undefined,
-      s_min: undefined,
+      s_min: "0",
       e_hour: undefined,
-      e_min: undefined
+      e_min: "0"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDateInput = this.handleDateInput.bind(this);
@@ -72,6 +74,7 @@ class JobForm extends React.Component {
         </label>
         <br />
         <br />
+
         <label>
           Move Date
           <br />
@@ -79,60 +82,33 @@ class JobForm extends React.Component {
         </label>
         <br />
         <br />
+
         <label>
           Start Time (hour:min)
           <br />
           <select defaultValue="" onChange={this.handleInput("s_hour")}>
-            <option value="">Choose a time</option>
-            {times.map((time, i) => {
-              return (
-                <option key={i} value={`${time}`}>
-                  {time < 12
-                    ? time + "am"
-                    : time === 12
-                    ? "12pm"
-                    : time - 12 + "pm"}
-                </option>
-              );
-            })}
+            <HourOptions />
           </select>{" "}
-          <select defaultValue="" onChange={this.handleInput("s_min")}>
-            <option value="">Choose a time</option>
-            <option value="0">00</option>
-            <option value="15">15</option>
-            <option value="30">30</option>
-            <option value="45">45</option>
+          <select defaultValue="0" onChange={this.handleInput("s_min")}>
+            <MinOptions />
           </select>
         </label>
         <br />
         <br />
+
         <label>
           End Time (hour:min)
           <br />
           <select defaultValue="" onChange={this.handleInput("e_hour")}>
-            <option value="">Choose a time</option>
-            {times.map((time, i) => {
-              return (
-                <option key={i} value={`${time}`}>
-                  {time < 12
-                    ? time + "am"
-                    : time === 12
-                    ? "12pm"
-                    : time - 12 + "pm"}
-                </option>
-              );
-            })}
+            <HourOptions />
           </select>{" "}
-          <select defaultValue="" onChange={this.handleInput("e_min")}>
-            <option value="">Choose a time</option>
-            <option value="0">00</option>
-            <option value="15">15</option>
-            <option value="30">30</option>
-            <option value="45">45</option>
+          <select defaultValue="0" onChange={this.handleInput("e_min")}>
+            <MinOptions />
           </select>
         </label>
         <br />
         <br />
+
         <button onClick={this.handleSubmit}>Add Job</button>
       </section>
     );
