@@ -49,10 +49,8 @@ class JobForm extends React.Component {
   }
 
   render() {
-    const times = [];
-    for (let i = 5; i < 23; i++) {
-      times.push(i);
-    }
+    let today = new Date();
+    today = today.toISOString().slice(0, 10);
     return (
       <section className="create-truck">
         <h1>Add Job</h1>
@@ -78,7 +76,7 @@ class JobForm extends React.Component {
         <label>
           Move Date
           <br />
-          <input type="date" onChange={this.handleDateInput} />
+          <input type="date" onChange={this.handleDateInput} min={today} />
         </label>
         <br />
         <br />
