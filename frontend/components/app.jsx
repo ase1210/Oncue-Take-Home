@@ -1,21 +1,17 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-// import SignupFormContainer from "./session/signup_form_container";
-// import LoginFormContainer from "./session/login_form_container";
-// import Splash from "./splash/splash";
-// import { AuthRoute, ProtectedRoute } from "../util/route_util";
-// import LoggedInApp from "./logged_in/logged_in_app";
+import TruckFormContainer from "./trucks/new_truck_form_container";
+import TruckIndexContainer from "./trucks/truck_index_container";
+import JobFormContainer from "./jobs/new_job_form_container";
 
 const App = () => (
   <div>
-    Webpack is working
-    {/* <Switch>
-      <AuthRoute exact path='/signup' component={SignupFormContainer} />
-      <AuthRoute exact path='/login' component={LoginFormContainer} />
-      <ProtectedRoute path='/messages' component={LoggedInApp} />
-      <AuthRoute exact path='/' component={Splash} />
-      <Redirect to='/' />
-    </Switch> */}
+    <Switch>
+      <Route exact path="/trucks/new" component={TruckFormContainer} />
+      <Route exact path="/jobs/new" component={JobFormContainer} />
+      <Route exact path="/trucks" component={TruckIndexContainer} />
+      <Redirect to="/trucks" />
+    </Switch>
   </div>
 );
 
