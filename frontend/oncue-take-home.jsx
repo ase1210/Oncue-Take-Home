@@ -5,7 +5,6 @@ import Root from "./components/root";
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  let preloadedState;
-  const store = configureStore(preloadedState);
+  const store = configureStore();
   ReactDOM.render(<Root store={store} />, root);
 });
