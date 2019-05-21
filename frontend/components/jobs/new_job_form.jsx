@@ -1,10 +1,11 @@
 import React from "react";
 import MinOptions from "../form_utilities/min_options";
 import HourOptions from "../form_utilities/hour_options";
+import { jobErrorUtil } from "../../util/job_error_util";
 
 const JobFormErrors = props => (
   <div className="job-errors-container">
-    {props.errors.map((error, idx) => (
+    {jobErrorUtil(props.errors).map((error, idx) => (
       <p className="job-errors-item" key={idx}>
         {error}
       </p>
