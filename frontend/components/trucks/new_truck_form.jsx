@@ -32,10 +32,6 @@ class TruckForm extends React.Component {
   }
 
   render() {
-    const times = [];
-    for (let i = 5; i < 23; i++) {
-      times.push(i);
-    }
     return (
       <section className="create-truck">
         <h1>Create Truck</h1>
