@@ -1,4 +1,5 @@
 import React from "react";
+import HourOptions from "../form_utilities/hour_options";
 
 const TruckFormErrors = props => (
   <div className="truck-errors-container">
@@ -60,18 +61,7 @@ class TruckForm extends React.Component {
           Start Time (hour)
           <br />
           <select defaultValue="" onChange={this.handleInput("start_time")}>
-            <option value="">Choose a time</option>
-            {times.map((time, i) => {
-              return (
-                <option key={i} value={`${time}`}>
-                  {time < 12
-                    ? time + "am"
-                    : time === 12
-                    ? "12pm"
-                    : time - 12 + "pm"}
-                </option>
-              );
-            })}
+            <HourOptions />
           </select>
         </label>
         <br />
@@ -80,18 +70,7 @@ class TruckForm extends React.Component {
           End Time (hour)
           <br />
           <select defaultValue="" onChange={this.handleInput("end_time")}>
-            <option value="">Choose a time</option>
-            {times.map((time, i) => {
-              return (
-                <option key={i} value={`${time}`}>
-                  {time < 12
-                    ? time + "am"
-                    : time === 12
-                    ? "12pm"
-                    : time - 12 + "pm"}
-                </option>
-              );
-            })}
+            <HourOptions />
           </select>
         </label>
         <br />
